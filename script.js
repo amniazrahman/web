@@ -1,26 +1,27 @@
 // Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',function(e){
     e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
+    document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
   });
 });
 
-// Contact form -> user's email client
-document.getElementById("contactForm").addEventListener("submit", function(e) {
+// EmailJS Contact Form
+document.getElementById("contactForm").addEventListener("submit", function(e){
   e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-
-  const subject = encodeURIComponent("New message from your website");
-  const body = encodeURIComponent(
-    `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+  emailjs.sendForm(
+    "service_amniazrahman",    // ✅ Your Service ID
+    "template_d7o0map",        // ✅ Your Template ID
+    this
+  ).then(
+    function(){
+      alert("Message sent successfully!");
+      document.getElementById("contactForm").reset();
+    },
+    function(error){
+      alert("Failed to send message!");
+      console.error("EmailJS error:", error);
+    }
   );
-
-  window.location.href =
-    `mailto:amniazrahman@gmail.com?subject=${subject}&body=${body}`;
 });
