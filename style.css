@@ -89,6 +89,8 @@ body {
   color: #fff;
   border-radius: 30px;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 
 /* Sections */
@@ -146,6 +148,16 @@ body {
   border: none;
 }
 
+.direct-email {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.direct-email a {
+  color: #fff;
+  text-decoration: underline;
+}
+
 /* Footer */
 .footer {
   text-align: center;
@@ -160,6 +172,7 @@ body {
     grid-template-columns: 1fr;
     text-align: center;
   }
+
   .hero-img img {
     margin: auto;
   }
